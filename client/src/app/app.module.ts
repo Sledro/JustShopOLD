@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -56,6 +57,12 @@ export const firebaseConfig = {
   messagingSenderId: "332928630494"
 };
 
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '42596ff4'
+  }
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -85,7 +92,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
