@@ -1,0 +1,45 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="light-bg">
+  <!--slider-->
+  <ion-slides auto-play="2000" pager>
+    <ion-slide *ngFor="let img of slides">
+      <img class="full-image" src="{{ img }}" alt=""/>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="card white-bg" *ngFor="let rest of restaurants" margin-top padding>
+    <div class="border-bottom" padding-bottom (click)="viewRestaurant(rest)">
+      <strong>{{ rest.name }}</strong>
+      <br>
+      <span ion-text color="dark">{{ rest.address}}</span>
+    </div>
+    <ion-grid no-padding margin-top>
+      <ion-row>
+        <ion-col *ngFor="let cat of rest.cats, let i = index" col-6 (click)="viewCategory(rest, cat)">
+          <img src="{{ cat.thumb }}" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

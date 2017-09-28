@@ -1,0 +1,33 @@
+<ion-split-pane>
+  <ion-menu [content]="content" *ngIf="user.$key">
+
+    <ion-content class="menu-left">
+      <ion-navbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-navbar>
+
+      <!-- User profile -->
+      <div text-left padding class="menu-left">
+        <a menuClose>
+          <img class="profile-picture" src="{{ user.photoURL }}">
+          <h4 color="dark">{{ user.name }}</h4>
+        </a>
+      </div>
+
+      <ion-list class="list-full-border">
+        <button ion-item menuClose *ngFor="let page of pages" (click)="openPage(page)">
+          {{ page.title }}
+          <ion-badge danger item-right *ngIf="page.count">{{ page.count }}</ion-badge>
+        </button>
+        <button ion-item menuClose (click)="logout()">
+          <!--<ion-icon item-left name="ios-exit-outline"></ion-icon>-->
+          Logout
+        </button>
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" main #content></ion-nav>
+
+</ion-split-pane>

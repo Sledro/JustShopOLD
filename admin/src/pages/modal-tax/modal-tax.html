@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<script src="../modal-order/modal-order.ts"></script>
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tax</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="taxForm">
+    <ion-list class="list-full-border form-validation">
+      <ion-item>
+        <ion-label>Enable</ion-label>
+        <ion-toggle formControlName="enable" [(ngModel)]="tax.enable"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" formControlName="name" [(ngModel)]="tax.name" text-right></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!taxForm.controls.name.valid  && (taxForm.controls.name.dirty || submitAttempt)">
+        <p ion-text color="danger">Please enter a valid name.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Percentage</ion-label>
+        <ion-input type="number" formControlName="rate" [(ngModel)]="tax.rate" text-right></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!taxForm.controls.rate.valid  && (taxForm.controls.rate.dirty || submitAttempt)">
+        <p ion-text color="danger">Please enter a valid percentage.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Applicable Items</ion-label>
+        <ion-select formControlName="apply_items" multiple="true" [(ngModel)]="tax.apply_items">
+          <ion-option value="{{ item.$key }}" *ngFor="let item of items | async" value="{{ item.$key }}">
+            {{ item.name }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!taxForm.controls.apply_items.valid  && (taxForm.controls.apply_items.dirty || submitAttempt)">
+        <p ion-text color="danger">Please choose items.</p>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <!--submit button-->
+  <button ion-button block color="primary" (click)="submit()">SAVE</button>
+</ion-content>

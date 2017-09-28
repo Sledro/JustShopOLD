@@ -1,0 +1,71 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Category Detail</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="submit()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-lg-6 class="col-thumb">
+        <img class="cat-thumb" src="{{ category.thumb }}" (click)="chooseFile()" alt="Thumbnail">
+        <form ngNoForm>
+          <input id="file" name="file" type="file" (change)="upload()">
+        </form>
+      </ion-col>
+      <ion-col col-12 col-lg-6>
+        <form [formGroup]="categoryForm">
+          <ion-list class="list-no-border list-form">
+            <ion-item>
+              <ion-input type="text" formControlName="name" [(ngModel)]="category.name" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!categoryForm.controls.name.valid  && (categoryForm.controls.name.dirty || submitAttempt)">
+              <p>Please enter a valid name.</p>
+            </ion-item>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- list of category item-->
+  <div class="padding-xxs">Items</div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-6 col-md-4 col-lg-3 class="item-block" *ngFor="let item of items | async"
+               [ngStyle]="{'background-image': 'url(' + item.thumb + ')'}" (click)="viewItem(item)"
+               (press)="showOptions(item)">
+        <div class="bg">
+          <div class="align-bottom">
+            <h6 ion-text class="pull-left" color="white">{{ item.name }}</h6>
+            <span ion-text color="white" class="price pull-right">${{ item.price }}</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab right bottom *ngIf="isEditing">
+    <button ion-fab color="primary" (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,46 @@
+page-home {
+
+  // report grid style
+  .report-grid {
+
+    ion-col {
+      min-height: 3em;
+      padding: 10px;
+      border: 1px solid #FFF;
+
+      &.total {
+        background: color($reports, total);
+      }
+      &.year {
+        background: color($reports, year);
+      }
+      &.month {
+        background: color($reports, month);
+      }
+      &.today {
+        background: color($reports, today);
+      }
+      &.pending {
+        background: color($colors, pending);
+      }
+      &.serving {
+        background: color($colors, serving);
+      }
+      &.complete {
+        background: color($colors, complete);
+      }
+      &.cancelled {
+        background: color($colors, cancelled);
+      }
+
+      .report-label, .report-numb {
+        color: color($colors, white);
+      }
+
+      .report-numb {
+        display: block;
+        font-size: 2em;
+      }
+    }
+  }
+}

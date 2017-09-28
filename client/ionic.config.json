@@ -1,0 +1,8 @@
+{
+  "name": "ionic2_restaurant_firebase",
+  "app_id": "3e4fcc38",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "341080880076",
+    "firebase_url": "https://ionic-restaurant.firebaseio.com",
+    "project_id": "ionic-restaurant",
+    "storage_bucket": "ionic-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341080880076:android:f8b227732f794dd4",
+        "android_client_info": {
+          "package_name": "com.ionicframework.ionic2restaurant586329"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341080880076-0uv5rlg80abpspngtgnkjca346l8rgcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSDIdYWGpXTc15LoudQkz6DJdFjGPDNBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

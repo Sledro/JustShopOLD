@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Orders</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="light-bg" padding>
+  <div margin-bottom *ngFor="let order of orders | async" (click)="viewOrder(order)">
+    <div class="card white-bg">
+      <div class="padding-xs">
+        <ion-badge color="{{ order.status }}">{{ order.status }}</ion-badge>
+        <h4 ion-text color="dark">#{{ order.number }}</h4>
+        <div>
+          <span class="pull-left">Created at</span>
+          <span ion-text class="pull-right" color="secondary">{{ order.created_at | date: 'y/MM/d H:mm'}}</span>
+        </div>
+      </div>
+      <div class="padding-xs">
+        <span class="pull-left">TOTAL</span>
+        <strong class="pull-right">${{ order.total }}</strong>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

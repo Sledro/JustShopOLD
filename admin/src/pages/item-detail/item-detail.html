@@ -1,0 +1,145 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button (click)="submit()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ isEditing ? 'Item detail' : 'Add item'}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col col-12 col-lg-6>
+        <img class="item-thumb" src="{{ item.thumb }}" (click)="chooseFile()" alt="Thumbnail">
+        <form ngNoForm>
+          <input id="item-thumb" name="file" type="file" (change)="upload()">
+        </form>
+      </ion-col>
+
+      <ion-col col-12 col-lg-6>
+        <form [formGroup]="itemForm">
+          <ion-list class="list-no-border list-form">
+            <ion-item>
+              <ion-input type="text" formControlName="name" [(ngModel)]="item.name" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!itemForm.controls.name.valid  && (itemForm.controls.name.dirty || submitAttempt)">
+              <p>Please enter a valid name.</p>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" formControlName="sku" [(ngModel)]="item.sku" placeholder="SKU"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!itemForm.controls.sku.valid  && (itemForm.controls.sku.dirty || submitAttempt)">
+              <p>Please enter a valid SKU.</p>
+            </ion-item>
+            <ion-item>
+              <ion-input type="number" formControlName="price" [(ngModel)]="item.price" placeholder="Price"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!itemForm.controls.price.valid  && (itemForm.controls.price.dirty || submitAttempt)">
+              <p>Please enter a valid price.</p>
+            </ion-item>
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-lg-6>
+        <ion-list class="list-no-border list-form">
+          <ion-list-header>
+            Sizes
+          </ion-list-header>
+
+          <ion-item *ngFor="let size of item.sizes, let i = index">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-5>
+                  <ion-item>
+                    <ion-input type="text" [(ngModel)]="size.name" placeholder="Size" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-5>
+                  <ion-item>
+                    <ion-input type="number" [(ngModel)]="size.price" placeholder="Price" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                  <button ion-button no-margin color="danger" (click)="removeSize(i)">
+                    <ion-icon name="close" color="white"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+        <button ion-button color="primary" (click)="addSize()">
+          <ion-icon name="add" color="white"></ion-icon>
+        </button>
+      </ion-col>
+
+      <ion-col col-lg-6>
+        <ion-list class="list-no-border list-form">
+          <ion-list-header>
+            Options
+          </ion-list-header>
+
+          <ion-item *ngFor="let option of item.options, let i = index">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-5>
+                  <ion-item>
+                    <ion-input type="text" [(ngModel)]="option.name" placeholder="Name" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-5>
+                  <ion-item>
+                    <ion-input type="number" [(ngModel)]="option.price" placeholder="Price" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                  <button ion-button no-margin color="danger" (click)="removeOption(i)">
+                    <ion-icon name="close" color="white"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+        <button ion-button no-margin color="primary" (click)="addOption()">
+          <ion-icon name="add" color="white"></ion-icon>
+        </button>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-lg-6>
+        <ion-list class="list-no-border list-form">
+          <ion-list-header>
+            Taxes
+          </ion-list-header>
+
+          <ion-item *ngFor="let tax of taxes | async">
+            <ion-label>{{ tax.name }} ({{ tax.rate }}%)</ion-label>
+            <ion-toggle [(ngModel)]="item.taxes[tax.$key]"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
