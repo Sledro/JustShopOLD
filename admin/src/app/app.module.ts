@@ -44,12 +44,12 @@ import { SettingPage } from '../pages/setting/setting';
 
 // AF2 Settings
 export const firebaseConfig = {
-  apiKey: "AIzaSyCSe1cjodOoop5KDMIwK0tQ0XyJpyzyzMc",
-  authDomain: "ionic-restaurant-multi.firebaseapp.com",
-  databaseURL: "https://ionic-restaurant-multi.firebaseio.com",
-  projectId: "ionic-restaurant-multi",
-  storageBucket: "ionic-restaurant-multi.appspot.com",
-  messagingSenderId: "370957142335"
+  apiKey: "AIzaSyCTZfPdJzClaREiX7mzg-uaDbxbQWfF_n8",
+  authDomain: "instashop-17.firebaseapp.com",
+  databaseURL: "https://instashop-17.firebaseio.com",
+  projectId: "instashop-17",
+  storageBucket: "instashop-17.appspot.com",
+  messagingSenderId: "332928630494"
 };
 
 @NgModule({
