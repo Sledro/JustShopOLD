@@ -45,6 +45,7 @@ import { OrderService } from "../services/order-service";
 import { AuthService } from "../services/auth-service";
 import { OrdersPage } from '../pages/orders/orders';
 import { OrderDetailPage } from '../pages/order-detail/order-detail';
+import { LocationPage } from '../pages/location/location';
 // end import pages
 
 // AF2 Settings
@@ -85,6 +86,7 @@ const cloudSettings: CloudSettings = {
     UserPage,
     OrdersPage,
     OrderDetailPage,
+    LocationPage,
   ],
   imports: [
     BrowserModule,
@@ -118,6 +120,7 @@ const cloudSettings: CloudSettings = {
     UserPage,
     OrdersPage,
     OrderDetailPage,
+    LocationPage
   ],
   providers: [
     StatusBar,

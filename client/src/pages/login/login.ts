@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { RegisterPage } from "../register/register";
-import { HomePage } from "../home/home";
+import { LocationPage } from "../location/location";
 import { AuthService } from "../../services/auth-service";
 
 
@@ -28,7 +28,7 @@ export class LoginPage {
     this.nav.setRoot(RegisterPage);
   }
 
-  // login and go to home page
+  // login and go to location page
   login() {
     if (!this.email || !this.password) {
       let alert = this.alertCtrl.create({
@@ -45,7 +45,7 @@ export class LoginPage {
 
     this.authService.login(this.email, this.password).then(authData => {
       loading.dismiss();
-      this.nav.setRoot(HomePage);
+      this.nav.setRoot(LocationPage);
     }, error => {
       loading.dismiss();
       let alert = this.alertCtrl.create({
@@ -61,7 +61,7 @@ export class LoginPage {
   loginWithFacebook() {
     this.authService.loginWithFacebook();
   }
-
+//
   // login with google
   loginWithGoogle() {
     this.authService.loginWithGoogle();
